@@ -12,11 +12,7 @@ export interface savedValues {
 }
 
 function getSteps() {
-  return [
-    "User Information",
-    "Personal Information",
-    "Review your Information",
-  ];
+  return ["Informações pessoais", "Informações gerais", "Revisar informações"];
 }
 
 function MultiStep() {
@@ -61,8 +57,6 @@ function MultiStep() {
 
   return (
     <div>
-      {/* <h1 className={classes.mainHeading}>Buy an Internet Plan</h1> */}
-
       <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((label) => (
           <Step key={label}>
