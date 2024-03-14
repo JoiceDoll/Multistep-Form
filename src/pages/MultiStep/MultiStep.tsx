@@ -43,24 +43,17 @@ function MultiStep() {
   function getStepContent(stepIndex: number) {
     switch (stepIndex) {
       case 0:
-        return (
-          <StepOne savedValues={savedValues} handleNext={handleNext}></StepOne>
-        );
+        return <StepOne savedValues={savedValues} handleNext={handleNext} />;
       case 1:
         return (
           <StepTwo
             savedValues={savedValues}
             handleNext={handleNext}
             handleBack={handleBack}
-          ></StepTwo>
+          />
         );
       case 2:
-        return (
-          <StepThree
-            savedValues={savedValues}
-            handleBack={handleBack}
-          ></StepThree>
-        );
+        return <StepThree savedValues={savedValues} handleBack={handleBack} />;
       default:
         return "ERROR";
     }
