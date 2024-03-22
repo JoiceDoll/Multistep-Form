@@ -1,6 +1,6 @@
 import { Router } from "./router";
 import { BrowserRouter } from "react-router-dom";
-import { GlobalStyles } from "./pages/shared";
+import { GlobalStyles } from "./shared";
 
 function App() {
   return (
