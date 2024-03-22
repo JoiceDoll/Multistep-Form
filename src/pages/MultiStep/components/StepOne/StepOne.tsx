@@ -3,6 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { savedValues } from "../../MultiStep";
 import { TextField } from "@mui/material";
+import { stepOneFields } from "../Fields/Fields";
 
 interface props {
   savedValues: [savedValues, React.Dispatch<React.SetStateAction<savedValues>>];
@@ -18,18 +19,12 @@ const StepOne: React.FC<props> = ({ savedValues, handleNext }) => {
         email: savedValues[0].email,
       }}
       validationSchema={yup.object({
-        firstName: yup
-          .string()
-          .required("This field is required")
-          .max(20, "Name should not be more than 20 characters"),
-        lastName: yup
-          .string()
-          .required("This field is required")
-          .max(20, "Name should not be more than 20 characters"),
+        firstName: yup.string().required("* O campo é obrigatório."),
+        lastName: yup.string().required("* O campo é obrigatório."),
         email: yup
           .string()
-          .email("Invalid email address")
-          .required("This field is required"),
+          .email("*O e-mail é inválido.")
+          .required("* O campo é obrigatório."),
       })}
       onSubmit={(values) => {
         savedValues[1]({
@@ -43,29 +38,24 @@ const StepOne: React.FC<props> = ({ savedValues, handleNext }) => {
     >
       {(formik) => {
         return (
-          <Form autoComplete="off">
-            <Field
-              error={formik.errors.firstName && formik.touched.firstName}
-              name="firstName"
-              as={TextField}
-              label="First Name"
-              helperText={<ErrorMessage name="firstName" />}
-            />
-            <Field
-              error={formik.errors.lastName && formik.touched.lastName}
-              name="lastName"
-              as={TextField}
-              label="Last Name"
-              helperText={<ErrorMessage name="lastName" />}
-            />
-            <Field
-              error={formik.errors.email && formik.touched.email}
-              name="email"
-              as={TextField}
-              label="Email"
-              helperText={<ErrorMessage name="email" />}
-            />
-            <button type="submit">Next</button>
+          <Form
+            autoComplete="off"
+            style={{ display: "flex", flexDirection: "column" }}
+          >
+            {stepOneFields.map((field) => (
+              <Field
+                error={
+                  formik.errors[field.name as keyof typeof formik.errors] &&
+                  formik.touched[field.name as keyof typeof formik.touched]
+                }
+                name={field.name}
+                as={TextField}
+                label={field.label}
+                helperText={<ErrorMessage name={field.name} />}
+              />
+            ))}
+
+            <button type="submit">Próximo</button>
           </Form>
         );
       }}

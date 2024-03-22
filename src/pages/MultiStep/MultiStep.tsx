@@ -1,6 +1,8 @@
 import React from "react";
 import { StepOne, StepTwo, StepThree } from "./components";
-import { Stepper, Step, StepLabel } from "@mui/material";
+import { Container, RightContainer, FormContainer } from "./styled";
+import MultiStepImage from "@/assets/svg/multiform.svg";
+import { StepperComponent } from "@/components";
 
 export interface savedValues {
   firstName: string;
@@ -56,19 +58,17 @@ function MultiStep() {
   }
 
   return (
-    <div>
-      <Stepper activeStep={activeStep} alternativeLabel>
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel>{label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
-
-      <div>
-        <div>{getStepContent(activeStep)}</div>
-      </div>
-    </div>
+    <Container>
+      <FormContainer>
+        <StepperComponent activeStep={activeStep} steps={steps} />
+        <div>
+          <div>{getStepContent(activeStep)}</div>
+        </div>
+      </FormContainer>
+      <RightContainer>
+        <img src={MultiStepImage} />
+      </RightContainer>
+    </Container>
   );
 }
 
