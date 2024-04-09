@@ -8,7 +8,13 @@ interface IProps {
 function StepperComponent(props: IProps) {
   const { activeStep, steps } = props;
   return (
-    <Box sx={{ width: "100%", padding: "2rem" }}>
+    <Box
+      sx={{
+        width: "100%",
+        padding: "2rem",
+        minHeight: "100px",
+      }}
+    >
       <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((label) => (
           <Step key={label}>

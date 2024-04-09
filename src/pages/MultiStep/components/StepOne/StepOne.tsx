@@ -1,9 +1,9 @@
 import React from "react";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { savedValues } from "../../MultiStep";
-import { TextField } from "@mui/material";
 import { stepOneFields } from "../Fields/Fields";
+import { FormContainer, MTextField , MButton} from "./styled";
 
 interface props {
   savedValues: [savedValues, React.Dispatch<React.SetStateAction<savedValues>>];
@@ -38,10 +38,7 @@ const StepOne: React.FC<props> = ({ savedValues, handleNext }) => {
     >
       {(formik) => {
         return (
-          <Form
-            autoComplete="off"
-            style={{ display: "flex", flexDirection: "column" }}
-          >
+          <FormContainer autoComplete="off">
             {stepOneFields.map((field) => (
               <Field
                 error={
@@ -49,14 +46,19 @@ const StepOne: React.FC<props> = ({ savedValues, handleNext }) => {
                   formik.touched[field.name as keyof typeof formik.touched]
                 }
                 name={field.name}
-                as={TextField}
+                as={MTextField}
                 label={field.label}
                 helperText={<ErrorMessage name={field.name} />}
               />
             ))}
 
-            <button type="submit">Próximo</button>
-          </Form>
+            <MButton
+              variant="contained"
+              type="submit"
+            >
+              Próximo
+            </MButton>
+          </FormContainer>
         );
       }}
     </Formik>

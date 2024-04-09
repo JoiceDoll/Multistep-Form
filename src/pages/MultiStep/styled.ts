@@ -2,27 +2,38 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: 100%;
-  background: blue;
+  min-width: 60rem;
   display: flex;
-  justify-content: space-between;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const FormContainer = styled.div`
   width: 60%;
-  background: purple;
   display: flex;
+  height: 100%;
+`;
+
+export const StepsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  height: 12%;
   flex-direction: column;
-  align-items: center;
 `;
 
 export const RightContainer = styled.div`
-  width: 30%;
+  width: 40%;
   height: 100%;
-  background: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid grey;
+  background: var(--orange-primary);
+  opacity: 0.5;
 
   img {
-    width: 100%;
-    height: 100%;
+    width: 60%;
+    height: 60%;
   }
 `;

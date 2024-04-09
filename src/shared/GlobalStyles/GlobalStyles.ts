@@ -6,10 +6,10 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    height: 100%;
   }
 
 body {
-    width: 100%;
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -28,18 +28,10 @@ body {
       border: 3px solid inherit;
     }
 
-    {
       scrollbar-width: thin;
       scrollbar-color: #8c8c8c;
-    }
   }
 
-  html, body, root {
-    height:100% !important;
-    width:100% !important;
-    background: green;
-  }
-  
   a {
     color: inherit;
     text-decoration: none;
@@ -49,10 +41,12 @@ body {
     color: #335b8e;
   }
   
-  :root {
-   
-  }
- 
+ :root{
+  --orange-primary: #d4a304;
+  --grey-secondary: #636363;
+  --black-primary: #000;
+  --black-secondary: #0f0f0f;
+ }
 }
 `;
 

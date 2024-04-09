@@ -1,6 +1,11 @@
 import React from "react";
 import { StepOne, StepTwo, StepThree } from "./components";
-import { Container, RightContainer, FormContainer } from "./styled";
+import {
+  Container,
+  RightContainer,
+  FormContainer,
+  StepsContainer,
+} from "./styled";
 import MultiStepImage from "@/assets/svg/multiform.svg";
 import { StepperComponent } from "@/components";
 
@@ -60,10 +65,20 @@ function MultiStep() {
   return (
     <Container>
       <FormContainer>
-        <StepperComponent activeStep={activeStep} steps={steps} />
-        <div>
-          <div>{getStepContent(activeStep)}</div>
-        </div>
+        <StepsContainer>
+          <StepperComponent activeStep={activeStep} steps={steps} />
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "30%",
+            }}
+          >
+            {getStepContent(activeStep)}
+          </div>
+        </StepsContainer>
       </FormContainer>
       <RightContainer>
         <img src={MultiStepImage} />
