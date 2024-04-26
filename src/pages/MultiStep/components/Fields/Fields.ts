@@ -16,22 +16,20 @@ export const stepOneFields = [
   },
 ];
 
-const StepTwoFields = [
+export const StepTwoFields = [
   {
-    name: "firstName",
+    name: "phoneNumber",
     type: "text",
-    label: "Nome",
+    label: "Contato",
   },
   {
-    name: "lastName",
+    name: "occupation",
     type: "text",
-    label: "Sobrenome",
+    label: "Profissão",
   },
   {
-    name: "email",
-    type: "email",
-    label: "E-mail",
+    name: "city",
+    type: "text",
+    label: "Cidade",
   },
 ];
-
-

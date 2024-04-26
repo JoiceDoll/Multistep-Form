@@ -81,7 +81,7 @@ function MultiStep() {
         </StepsContainer>
       </FormContainer>
       <RightContainer>
-        <img src={MultiStepImage} />
+        <img src={MultiStepImage} loading="lazy"/>
       </RightContainer>
     </Container>
   );

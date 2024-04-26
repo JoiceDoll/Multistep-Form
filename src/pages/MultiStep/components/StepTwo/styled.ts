@@ -17,8 +17,8 @@ export const MTextField = styled(TextField)`
 `;
 
 export const MButton = styled(Button)`
-  width: 70%;
-  height: 15%;
+  width: 45%;
+  height: 100%;
 
   &.MuiButton-root {
     background: var(--black-secondary);
@@ -28,4 +28,12 @@ export const MButton = styled(Button)`
       background: var(--grey-secondary);
       color: var(--black-primary);
     }
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  width: 70%;
+  height: 15%;
+  display: flex;
+  justify-content: space-between;
 `;

@@ -1,8 +1,9 @@
 import React from "react";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { savedValues } from "../../MultiStep";
-import { TextField } from "@mui/material";
+import { StepTwoFields } from "../Fields/Fields";
+import { MTextField, MButton, FormContainer, ButtonContainer } from "./styled";
 
 interface props {
   savedValues: [savedValues, React.Dispatch<React.SetStateAction<savedValues>>];
@@ -21,13 +22,12 @@ const StepTwo: React.FC<props> = ({ savedValues, handleNext, handleBack }) => {
       validationSchema={yup.object({
         phoneNumber: yup
           .string()
-          .required("This field is required")
-          .max(11, "Phone number should not be more than 11 characters"),
-        city: yup.string().required("This field is required"),
-        occupation: yup.string().required("This field is required"),
+          .required("*Informe o número de telefone")
+          .max(11, "*O telefone não pode ter mais que 1 caracteres."),
+        city: yup.string().required("*Informa a cidade"),
+        occupation: yup.string().required("*Informe a profissão."),
       })}
       onSubmit={(values) => {
-        console.log(values);
         savedValues[1]({
           ...savedValues[0],
           phoneNumber: values.phoneNumber,
@@ -38,36 +38,28 @@ const StepTwo: React.FC<props> = ({ savedValues, handleNext, handleBack }) => {
       }}
     >
       {(formik) => (
-        <Form autoComplete="off">
-          <Field
-            error={formik.errors.phoneNumber && formik.touched.phoneNumber}
-            name="phoneNumber"
-            as={TextField}
-            label="Phone Number"
-            helperText={<ErrorMessage name="phoneNumber" />}
-          />
-          <Field
-            error={formik.errors.occupation && formik.touched.occupation}
-            name="occupation"
-            as={TextField}
-            label="Occupation"
-            helperText={<ErrorMessage name="occupation" />}
-          />
-          <Field
-            error={formik.errors.city && formik.touched.city}
-            name="city"
-            as={TextField}
-            label="City"
-            helperText={<ErrorMessage name="city" />}
-          />
-          <div>
-            <button type="button" onClick={handleBack}>
-              Back
-            </button>
+        <FormContainer autoComplete="off">
+          {StepTwoFields.map((field) => (
+            <Field
+              error={
+                formik.errors[field.name as keyof typeof formik.errors] &&
+                formik.touched[field.name as keyof typeof formik.touched]
+              }
+              name={field.name}
+              as={MTextField}
+              label={field.label}
+              helperText={<ErrorMessage name={field.name} />}
+            />
+          ))}
 
-            <button type="submit">Next</button>
-          </div>
-        </Form>
+          <ButtonContainer>
+            <MButton type="button" onClick={handleBack}>
+              Anterior
+            </MButton>
+
+            <MButton type="submit">Próximo</MButton>
+          </ButtonContainer>
+        </FormContainer>
       )}
     </Formik>
   );

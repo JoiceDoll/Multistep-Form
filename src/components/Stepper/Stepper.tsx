@@ -1,3 +1,4 @@
+import React from "react";
 import { Stepper, Step, StepLabel, Box } from "@mui/material";
 
 interface IProps {
@@ -5,8 +6,7 @@ interface IProps {
   steps: string[];
 }
 
-function StepperComponent(props: IProps) {
-  const { activeStep, steps } = props;
+const StepperComponent: React.FC<IProps> = ({ activeStep, steps }) => {
   return (
     <Box
       sx={{
@@ -24,6 +24,6 @@ function StepperComponent(props: IProps) {
       </Stepper>
     </Box>
   );
-}
+};
 
 export default StepperComponent;

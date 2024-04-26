@@ -1,8 +1,8 @@
 import React from "react";
 import { Formik, Field, ErrorMessage } from "formik";
+import { stepOneFields } from "../Fields/Fields";
 import * as yup from "yup";
 import { savedValues } from "../../MultiStep";
-import { stepOneFields } from "../Fields/Fields";
 import { FormContainer, MTextField , MButton} from "./styled";
 
 interface props {

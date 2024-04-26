@@ -17,6 +17,7 @@ body {
     -webkit-font-smoothing: antialiased;
     min-width:30rem;
 
+
     ::-webkit-scrollbar {
       width: 5px;
       height: 5px;
@@ -46,6 +47,7 @@ body {
   --grey-secondary: #636363;
   --black-primary: #000;
   --black-secondary: #0f0f0f;
+  --white-primary: #ffffff;
  }
 }
 `;
